@@ -2,7 +2,7 @@
   "name": "jsg-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gottwaldjs.github.io/jsg-portfolio",
+  "homepage": "https://userName.github.io/jsg-portfolio",
   "dependencies": {
     "@carbon/colors": "^11.14.0",
     "@carbon/elements": "^11.21.0",
@@ -31,6 +31,8 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
