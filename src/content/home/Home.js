@@ -32,10 +32,10 @@ const Home = () => {
             ctaText="View Project"
             ctaLink="#"
             backgroundColor='card-bg-color'
-            tag1={{ type: '', label: 'UXD' }}
-            tag2={{ type: '', label: 'UID' }}
-            tag3={{ type: '', label: 'User Metrics' }}
-            tag4={{ type: '', label: 'Onsite Support' }}
+            tag1={{ type: 'gray', label: 'UXD' }}
+            tag2={{ type: 'gray', label: 'UID' }}
+            tag3={{ type: 'gray', label: 'User Metrics' }}
+            tag4={{ type: 'gray', label: 'Onsite Support' }}
         />
         </Column>
         <Column lg={{ span: 4, offset: 0 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__cards">
@@ -47,9 +47,9 @@ const Home = () => {
             ctaLink="#"
             backgroundColor='card-bg-color'
             tag1={{ type: 'blue', label: 'Current' }}
-            tag2={{ type: '', label: 'UXD' }}
-            tag3={{ type: '', label: 'UID' }}
-            tag4={{ type: '', label: 'User Metrics Lead' }}
+            tag2={{ type: 'gray', label: 'UXD' }}
+            tag3={{ type: 'gray', label: 'UID' }}
+            tag4={{ type: 'gray', label: 'User Metrics Lead' }}
         />
         </Column>
         <Column lg={{ span: 4, offset: 0 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__cards">
@@ -60,9 +60,9 @@ const Home = () => {
             ctaText="View Project"
             ctaLink="#"
             backgroundColor='card-bg-color'
-            tag1={{ type: '', label: 'UX Lead' }}
-            tag2={{ type: '', label: 'UI Lead' }}
-            tag3={{ type: '', label: 'User Metrics Lead' }}
+            tag1={{ type: 'gray', label: 'UX Lead' }}
+            tag2={{ type: 'gray', label: 'UI Lead' }}
+            tag3={{ type: 'gray', label: 'User Metrics Lead' }}
         />
         </Column>
         <Column lg={{ span: 4, offset: 2 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__row2-cards">
@@ -73,8 +73,8 @@ const Home = () => {
             ctaText="View Project"
             ctaLink="#"
             backgroundColor='card-bg-color'
-            tag1={{ type: '', label: 'UX Lead' }}
-            tag2={{ type: '', label: 'User Metrics Lead' }}
+            tag1={{ type: 'gray', label: 'UX Lead' }}
+            tag2={{ type: 'gray', label: 'User Metrics Lead' }}
         />
         </Column>
         <Column lg={16} md={8} sm={4} className="landing-page__footer">
