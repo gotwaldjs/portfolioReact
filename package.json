@@ -2,7 +2,7 @@
   "name": "jsg-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gotwaldjs.github.io/jsg-portfolio/",
+  "homepage": "https://www-pre.jeffreygottwald.com",
   "dependencies": {
     "@carbon/colors": "^11.14.0",
     "@carbon/elements": "^11.21.0",
