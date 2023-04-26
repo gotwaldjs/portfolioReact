@@ -1,6 +1,7 @@
 {
   "name": "jsg-portfolio",
   "version": "1.0.0",
+  "homepage": "https://gotwaldjs.github.io/jsg-portfolio",
   "description": "Jefe's Portfolio Build",
   "main": "index.js",
   "repository": "https://github.com/gotwaldjs/jsg-portfolio.git",
@@ -8,14 +9,30 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "ci-check": "yarn format:diff && yarn test",
+    "clean": "yarn cache clean && yarn install",
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "dependencies": {
+    "gh-pages": "^5.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-scripts": "4.0.1"
+    "react-scripts": "^2.1.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
