@@ -1,1 +1,0 @@
-#Jeff's portfolio was built with IBM Carbon's react components for the most part. 
