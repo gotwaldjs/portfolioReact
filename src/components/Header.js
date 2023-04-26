@@ -20,14 +20,14 @@ function MastHead() {
       </HeaderName>
       <HeaderNavigation aria-label="JSG [Designs]">
         <HeaderMenuItem isActive href="#">
-          Link 1
+          Home
         </HeaderMenuItem>
-        <HeaderMenuItem href="#">Link 2</HeaderMenuItem>
-        <HeaderMenuItem href="#">Link 3</HeaderMenuItem>
-        <HeaderMenu aria-label="Link 4" menuLinkName="Link 4">
-          <HeaderMenuItem href="#">Sub-link 1</HeaderMenuItem>
-          <HeaderMenuItem href="#">Sub-link 2</HeaderMenuItem>
-          <HeaderMenuItem href="#">Sub-link 3</HeaderMenuItem>
+        <HeaderMenuItem href="#">About Me</HeaderMenuItem>
+        <HeaderMenuItem href="#">My CV</HeaderMenuItem>
+        <HeaderMenu aria-label="Link 4" menuLinkName="Consulting Roles">
+          <HeaderMenuItem href="#">UX Design</HeaderMenuItem>
+          <HeaderMenuItem href="#">UI Design</HeaderMenuItem>
+          <HeaderMenuItem href="#">User Metrics</HeaderMenuItem>
         </HeaderMenu>
       </HeaderNavigation>
       <SideNav

@@ -86,11 +86,7 @@ CardTwoTags.propTypes = {
   tag2: PropTypes.shape({
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-  }).isRequired,
-  tag3: PropTypes.shape({
-    type: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-  }).isRequired,
+  }).isRequired
 };
 
 CardTwoTags.defaultProps = {
