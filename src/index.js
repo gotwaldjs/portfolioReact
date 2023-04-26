@@ -5,8 +5,7 @@ import './index.scss';
 
 
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/jsg-portfolio">
     <App />
   </BrowserRouter>
 );
-
