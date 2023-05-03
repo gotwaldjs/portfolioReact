@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "homepage": "https://www-pre.jeffreygottwald.com",
-  "main": "public/index.html",
+  "main": "src/index.js",
   "dependencies": {
     "@carbon/colors": "^11.14.0",
     "@carbon/elements": "^11.21.0",
