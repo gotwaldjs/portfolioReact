@@ -5,7 +5,6 @@
   "homepage": "https://www-pre.jeffreygottwald.com",
   "main": "src/index.js",
   "dependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@carbon/colors": "^11.14.0",
     "@carbon/elements": "^11.21.0",
     "@carbon/grid": "^11.13.0",
