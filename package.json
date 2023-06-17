@@ -1224,7 +1224,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "heroku-postbuild": "npm run build"
   },  
