@@ -81,5 +81,15 @@
     "prop-types": "^15.8.1",
     "storybook": "^7.0.5",
     "webpack": "^5.79.0"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gotwaldjs/portfolioReact.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gotwaldjs/portfolioReact/issues"
   }
 }
