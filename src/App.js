@@ -11,7 +11,7 @@ function App() {
         <MastHead />
         <Content>
           <Routes> 
-            <Route path="/portfolioReact" element={<Home />} /> 
+            <Route path="/" element={<Home />} /> 
           </Routes>
         </Content>
       </Theme>

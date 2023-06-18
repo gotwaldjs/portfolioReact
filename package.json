@@ -4,6 +4,7 @@
   "description": "Jefe's portfolio app",
   "main": "\"src/index.js\"",
   "dependencies": {
+    "@carbon/react": "^1.31.3",
     "abab": "^2.0.6",
     "accepts": "^1.3.8",
     "acorn": "^7.4.1",
@@ -1242,5 +1243,20 @@
   "bugs": {
     "url": "https://github.com/gotwaldjs/portfolioReact/issues"
   },
-  "homepage": "https://www-pre.jeffreygottwald.com"
+  "homepage": "https://www-pre.jeffreygottwald.com",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
 }
