@@ -1,12 +1,10 @@
 @use '@carbon/react/scss/spacing' as *;
 @use '@carbon/react/scss/type' as *;
-@use '@carbon/type' as *;
 @use '@carbon/react/scss/breakpoint' as *;
 @use '@carbon/react/scss/theme' as *;
 @use '@carbon/colors' as *;
 @use './mixins.scss' as *;
 @use './overrides.scss'as *;
-@use '@carbon/styles/scss/type' as *;
 
 
 .landing-page__illo {
