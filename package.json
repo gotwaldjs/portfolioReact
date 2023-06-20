@@ -2,7 +2,7 @@
   "name": "portfolioreact",
   "version": "1.0.0",
   "description": "Jefe's portfolio app",
-  "main": "\"src/index.js\"",
+  "main": "src/index.js",
   "dependencies": {
     "@carbon/colors": "^10.37.1",
     "@carbon/elements": "^10.56.1",
@@ -1228,7 +1228,7 @@
   },
   "engines": {
     "node": "18.16.0",
-    "npm": "9.5.1"
+    "npm": "9.7.1"
   },
   "scripts": {
     "start": "react-scripts start",

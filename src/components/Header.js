@@ -16,18 +16,19 @@ function MastHead() {
         isActive={isSideNavExpanded}
       />
       <HeaderName href="#" prefix="JSG">
-        [Designs]
+        [Design and User Analysis]
       </HeaderName>
       <HeaderNavigation aria-label="JSG [Designs]">
         <HeaderMenuItem isActive href="#">
-          Link 1
+          Home
         </HeaderMenuItem>
-        <HeaderMenuItem href="#">Link 2</HeaderMenuItem>
-        <HeaderMenuItem href="#">Link 3</HeaderMenuItem>
-        <HeaderMenu aria-label="Link 4" menuLinkName="Link 4">
-          <HeaderMenuItem href="#">Sub-link 1</HeaderMenuItem>
-          <HeaderMenuItem href="#">Sub-link 2</HeaderMenuItem>
-          <HeaderMenuItem href="#">Sub-link 3</HeaderMenuItem>
+        <HeaderMenuItem href="#">About Me</HeaderMenuItem>
+        <HeaderMenuItem href="#">Resume</HeaderMenuItem>
+        <HeaderMenu aria-label="Consulting Roles" menuLinkName="Consulting Roles">
+          <HeaderMenuItem href="#">UX Design</HeaderMenuItem>
+          <HeaderMenuItem href="#">UI Design</HeaderMenuItem>
+          <HeaderMenuItem href="#">Information Architecture</HeaderMenuItem>
+          <HeaderMenuItem href="#">User Analysis</HeaderMenuItem>
         </HeaderMenu>
       </HeaderNavigation>
       <SideNav

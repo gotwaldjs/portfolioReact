@@ -27,7 +27,7 @@ const Home = () => {
         <Column lg={{ span: 4, offset: 2 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__cards">
             <CardFourTags
             title="Card Title"
-            description="Roles"
+            description="My Roles"
             imageSrc={masCardHolderImage}
             ctaText="View Project"
             ctaLink="#"
@@ -41,7 +41,7 @@ const Home = () => {
         <Column lg={{ span: 4, offset: 0 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__cards">
             <CardFourTags
             title="Card Title"
-            description="Roles"
+            description="My Roles"
             imageSrc={masCardHolderImage}
             ctaText="View Project"
             ctaLink="#"
@@ -55,7 +55,7 @@ const Home = () => {
         <Column lg={{ span: 4, offset: 0 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__cards">
             <CardThreeTags
             title="Card Title"
-            description="Roles"
+            description="My Roles"
             imageSrc={espnThumb}
             ctaText="View Project"
             ctaLink="#"
@@ -68,7 +68,7 @@ const Home = () => {
         <Column lg={{ span: 4, offset: 2 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__row2-cards">
             <CardTwoTags
             title="Card Title"
-            description="Roles"
+            description="My Roles"
             imageSrc={masCardHolderImage}
             ctaText="View Project"
             ctaLink="#"
