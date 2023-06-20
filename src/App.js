@@ -2,7 +2,7 @@ import React from 'react';
 import { Content, Theme } from '@carbon/react';
 import MastHead from './components/Header';
 import { Route, Routes } from 'react-router-dom'; 
-import Home from './content/home/Home';
+import Home from './content/home/Home.js';
 
 function App() {
   return (
