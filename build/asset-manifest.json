@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f6b78276.css",
-    "main.js": "/static/js/main.98b88ac9.js",
+    "main.js": "/static/js/main.60e254f9.js",
     "static/media/mas_card_holder.png": "/static/media/mas_card_holder.4263bb9bcde3cc86f0ac.png",
     "static/media/espn_card_001.png": "/static/media/espn_card_001.31b44f8741b208549353.png",
     "static/media/IBMPlexSerif-SemiBoldItalic-Cyrillic.woff": "/static/media/IBMPlexSerif-SemiBoldItalic-Cyrillic.d96e5a614e96c351c453.woff",
@@ -186,10 +186,10 @@
     "static/media/IBMPlexMono-Regular-Latin3.woff2": "/static/media/IBMPlexMono-Regular-Latin3.cacfd1d7dbd14067b970.woff2",
     "index.html": "/index.html",
     "main.f6b78276.css.map": "/static/css/main.f6b78276.css.map",
-    "main.98b88ac9.js.map": "/static/js/main.98b88ac9.js.map"
+    "main.60e254f9.js.map": "/static/js/main.60e254f9.js.map"
   },
   "entrypoints": [
     "static/css/main.f6b78276.css",
-    "static/js/main.98b88ac9.js"
+    "static/js/main.60e254f9.js"
   ]
 }
