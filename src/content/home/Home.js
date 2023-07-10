@@ -4,8 +4,11 @@ import {
     Column,
 } from '@carbon/react';
 import { CardTwoTags, CardThreeTags, CardFourTags} from '../../components/card/Card';
-import masCardHolderImage from '../../media/hs/mas_card_holder.png';
-import espnThumb from '../../media/hs/espn_card_001.png';
+import mas_thumb from '../../media/hs/mas_tn.png';
+import wim_thumb from '../../media/hs/wim_tn.png';
+import espn_thumb from '../../media/hs/espn_tn.png';
+import uso_thumb from '../../media/hs/uso_tb.png';
+import dashboards_thumb from '../../media/hs/dashboards_tb.png';
 
 
 import './home-page.scss';
@@ -26,9 +29,9 @@ const Home = () => {
         </Column>
         <Column lg={{ span: 4, offset: 2 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__cards">
             <CardFourTags
-            title="Card Title"
+            title="2017 - 2023"
             description="My Roles"
-            imageSrc={masCardHolderImage}
+            imageSrc={mas_thumb}
             ctaText="View Project"
             ctaLink="#"
             backgroundColor='card-bg-color'
@@ -40,9 +43,9 @@ const Home = () => {
         </Column>
         <Column lg={{ span: 4, offset: 0 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__cards">
             <CardFourTags
-            title="Card Title"
+            title="2017 - 2018 | 2021 - 2023"
             description="My Roles"
-            imageSrc={masCardHolderImage}
+            imageSrc={wim_thumb}
             ctaText="View Project"
             ctaLink="#"
             backgroundColor='card-bg-color'
@@ -54,9 +57,9 @@ const Home = () => {
         </Column>
         <Column lg={{ span: 4, offset: 0 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__cards">
             <CardThreeTags
-            title="Card Title"
+            title="2017 - 2023"
             description="My Roles"
-            imageSrc={espnThumb}
+            imageSrc={espn_thumb}
             ctaText="View Project"
             ctaLink="#"
             backgroundColor='card-bg-color'
@@ -67,14 +70,27 @@ const Home = () => {
         </Column>
         <Column lg={{ span: 4, offset: 2 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__row2-cards">
             <CardTwoTags
-            title="Card Title"
+            title="2015 - 2023"
             description="My Roles"
-            imageSrc={masCardHolderImage}
+            imageSrc={uso_thumb}
             ctaText="View Project"
             ctaLink="#"
             backgroundColor='card-bg-color'
             tag1={{ type: 'gray', label: 'UX Lead' }}
-            tag2={{ type: 'gray', label: 'User Metrics Lead' }}
+            tag2={{ type: 'gray', label: 'UI Lead' }}
+        />
+        </Column>
+        <Column lg={{ span: 4, offset: 0 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__row2-cards">
+            <CardTwoTags
+            title="2017 - 2023"
+            description="My Roles"
+            imageSrc={dashboards_thumb}
+            ctaText="View Project"
+            ctaLink="#"
+            backgroundColor='card-bg-color'
+            tag1={{ type: 'gray', label: 'UX Lead' }}
+            tag2={{ type: 'gray', label: 'UI Lead' }}
+            tag3={{ type: 'gray', label: 'User Metrics Lead' }}
         />
         </Column>
         <Column lg={16} md={8} sm={4} className="landing-page__footer">

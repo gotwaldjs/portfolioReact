@@ -43,7 +43,12 @@ Card.defaultProps = {
 export const CardTwoTags = ({ imageSrc, title, description, ctaLink, backgroundColor,tag1,tag2 }) => {
   return (
     <div className="card" style={{ backgroundColor }} onClick={() => window.location.href = ctaLink}>
-      <img src={imageSrc} alt="" className="card__image" />
+      <div className="card__image-container">
+        <img src={imageSrc} alt="" className="card__image" />
+        <div className="card__overlay">
+          <p className="overlay__title">{title}</p>
+        </div>
+      </div>
       <div className="addBorderBottom">
         <p className="card__description">{description}</p>
       </div>
@@ -99,7 +104,12 @@ CardTwoTags.defaultProps = {
 export const CardThreeTags = ({ imageSrc, title, description, ctaLink, backgroundColor,tag1,tag2,tag3 }) => {
   return (
     <div className="card" style={{ backgroundColor }} onClick={() => window.location.href = ctaLink}>
-      <img src={imageSrc} alt="" className="card__image" />
+      <div className="card__image-container">
+        <img src={imageSrc} alt="" className="card__image" />
+        <div className="card__overlay">
+          <p className="overlay__title">{title}</p>
+        </div>
+      </div>
       <div className="addBorderBottom">
         <p className="card__description">{description}</p>
       </div>
@@ -165,7 +175,12 @@ CardThreeTags.defaultProps = {
 export const CardFourTags = ({ imageSrc, title, description, ctaLink, backgroundColor,tag1,tag2,tag3,tag4 }) => {
   return (
     <div className="card" style={{ backgroundColor }} onClick={() => window.location.href = ctaLink}>
-      <img src={imageSrc} alt="" className="card__image" />
+      <div className="card__image-container">
+        <img src={imageSrc} alt="" className="card__image" />
+        <div className="card__overlay">
+          <p className="overlay__title">{title}</p>
+        </div>
+      </div>
       <div className="addBorderBottom">
         <p className="card__description">{description}</p>
       </div>

@@ -4,6 +4,8 @@
 @use '@carbon/react/scss/spacing' as *;
 
 
+
+/*
 .card {
   border-radius: 8px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
@@ -20,7 +22,51 @@
   margin: 0 auto;
   max-width: 100%;
 }
+
+.card__overlay {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  color: white;
+  font-size: 11pt;
+  font-weight: bold;
+}
+*/
+.card {
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
+  padding: $spacing-05;
+  background-color: colors.$gray-90;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  .card__image-container {
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+
+    .card__image {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .card__overlay {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
   
+.overlay__title{
+  color: #ffffff;
+  font-size: 11pt;
+  margin-top: 0 auto;
+}
 .card__title {
   color: #333333;
   font-size: 24px;
