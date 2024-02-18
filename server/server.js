@@ -41,12 +41,6 @@ const staticPath = path.join(__dirname, '../client/build');
 console.log(`Serving static files from: ${staticPath}`);
 app.use(express.static(staticPath));
 
-// After all other middleware/routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(staticPath, 'index.html'));
-});
-
-app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
