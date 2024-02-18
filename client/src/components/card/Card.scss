@@ -1,0 +1,206 @@
+@use '@carbon/react/scss/colors';
+@use '@carbon/react/scss/themes' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/themes';
+
+@mixin sm-breakpoint {
+  @media (max-width: 672px) {
+    @content; // This allows you to pass in SCSS content when the mixin is included
+  }
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
+  padding: $spacing-05;
+  margin-right: $spacing-04;
+  margin-left: $spacing-04;
+  background-color: themes.$layer-01;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+
+  .card__image-container {
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+
+    .card__image {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .card__overlay {
+      position: absolute;
+      top: $spacing-05;
+      left: 12px;
+      color: white;
+      font-weight: bold;
+    }
+
+  }
+
+  .lock-container {
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    right: 0;
+    background-color: themes.$layer-selected-inverse;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: $spacing-06;
+    right: $spacing-06;
+    width: 32px;
+    height: 32px;
+  }
+
+  .lock {
+    fill: themes.$icon-inverse;
+  }
+
+}
+  
+.overlay__title{
+  color: #ffffff;
+  font-size: 11pt;
+  margin-top: 0 auto;
+}
+
+.card__title {
+  color: #333333;
+  font-size: 24px;
+  margin-top: $spacing-05;
+}
+  
+.card__description {
+  @include type-style('label-02');
+  text-align: left;
+  //margin-top: $spacing-04;
+  padding-top: $spacing-05;
+  padding-bottom: $spacing-02;
+}
+  
+.card__cta {
+  background-color: #0072c3;
+  border-radius: 4px;
+  color: colors.$gray-90;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 16px;
+  padding: 12px 24px;
+  text-decoration: none;
+}
+  
+.card__cta:hover {
+  background-color: #005da5;
+}
+
+.addBorderBottom {
+  border-bottom: solid 1px colors.$gray-70;
+}
+
+#card__footer{
+  display:'flex';
+  padding-top: $spacing-04;
+}
+
+.iButton {
+  text-align: right;
+}
+
+
+.card__footerLT{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card__footerRT{
+  display: flex;
+  justify-content: flex-end;
+  align-items: right;
+}
+
+.card__footer Tag {
+  align-self: left; /* Add this line to vertically align the Tag component */ 
+}
+
+.card__footer IconButton {
+  /* styles for the IconButton component here */
+  align-self: center; /* Add this line to vertically align the IconButton component */
+  text-align: right;
+}
+
+.capabilities-card {
+  border-radius: 8px;
+  padding: $spacing-05;
+  margin-right: $spacing-04;
+  margin-left: $spacing-04;
+  background-color: themes.$layer-01;
+  display: flex;
+  flex-direction: column;
+  height: 175px;
+}
+
+.capabilities-title{
+  @include type-style('heading-02');
+}
+
+.bullets-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); // Create 4 equal columns
+  gap: $spacing-03; // Space between the grid items
+  padding-top: $spacing-04;
+
+  .bullet-item {
+    grid-column: span 2; // Each item spans 2 columns
+    @include type-style('body-02');
+  }
+  
+  .left-column {
+    grid-column: 1 / span 2; // Items in the left 2 columns
+  }
+  
+  .right-column {
+    grid-column: 3 / span 2; // Items in the right 2 columns
+  }
+}
+
+.capabilities__border-bottom{
+  border-bottom: solid 1px colors.$gray-70;
+  padding-bottom: $spacing-03;
+}
+
+.tool-card {
+  width: 96px;
+  height: 125px;
+  margin-right: $spacing-04;
+  margin-left: $spacing-04;
+  background-color: themes.$layer-01; // Adjust the color as needed
+  display: flex;
+  justify-content: space-between;
+  align-items:flex-start;
+  flex-direction: column;
+  padding: $spacing-04;
+  border-radius: $spacing-01; // Adjust as needed
+
+  @include sm-breakpoint{
+    margin-bottom: $spacing-05;
+    margin-right: $spacing-05;
+    margin-left: $spacing-05;
+}
+}
+
+.tool-card__image {
+  max-height: 48px;
+}
+
+.tool-card__label {
+  @include type-style('heading-01');; // Adjust the color as needed
+  margin-top: $spacing-05;
+}
+

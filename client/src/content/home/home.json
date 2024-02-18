@@ -1,0 +1,137 @@
+{
+    "home": {
+      "content": {
+        "welcomeMat": "Hello! I'm Jeff",
+        "title" : "Experience Architect",
+        "open": true,
+        "statusTrue": "I am currently available for roles in User Experience Design and User Data Analysis",
+        "briefography": "I am Richmond-based experience design and user data analyst professional. My goal is to leverage user- and data-driven insights to provide the best experience for users. I have been designing user experiences for ten plus years now mainly within but not limited to digital interfaces. Over that time my roles have spanned from user researcher, UX and UI designer, to the lead designer in the Sports & Entertainment and Financial market sectors. I lean heavily on strategy and storytelling as my primary pillars throughout the design process. My curiosity leads me to never to shy away from a challenge or design to a new technology (most recently for Apple’s Vision Pro VR headset). Please feel free to reach out about opportunities and availability.",
+        "workPrivate": "All work with a lock is currently private and requires login credentials for access. Please contact me to request credentials to view all work examples.",
+        "workAvailable": "You're logged in! You are now cleared to snoop around all projects!",
+        "lockedModal": "This project is currently private. To view, please request credentials for access.",
+        "incompletedProjModal": "This project is under construction and will be available soon. Please contact me to setup a one-on-one or to answer any questions about this project in the meantime.",
+        "work": [
+          {
+            "id": "work01",
+            "timeOnProject": "2017 - Current",
+            "currentProj": false,
+            "tags": ["UXD", "UID", "User Metrics", "Onsite Support"],
+            "image":"/media/hs/mas_tn.png",
+            "ctaText": "View Project",
+            "ctaLink":"../mas",
+            "private":true,
+            "incomplete":false
+          },
+          {
+            "id": "work02",
+            "timeOnProject": "2017 - 2018|2021-Current",
+            "currentProj": false,
+            "tags": ["UXD", "UID", "User Metrics Lead", "Event Support"],
+            "image":"/media/hs/wim_tn.png",
+            "ctaText": "View Project",
+            "ctaLink":"#",
+            "private":false,
+            "incomplete":true
+          },
+          {
+            "id": "work03",
+            "timeOnProject": "2017 - 2023",
+            "currentProj": false,
+            "tags": ["UX Lead", "UI Lead", "User Metrics Lead"],
+            "image":"/media/hs/espn_tn.png",
+            "ctaText": "View Project",
+            "ctaLink":"#",
+            "private":false,
+            "incomplete":true
+          },
+          {
+            "id": "work04",
+            "timeOnProject": "2015 - Current",
+            "currentProj": false,
+            "tags": ["UX Lead", "UI Lead", "User Metrics", "Event Support"],
+            "image":"/media/hs/uso_tb.png",
+            "ctaText": "View Project",
+            "ctaLink":"#",
+            "private":false,
+            "incomplete":true
+          },
+          {
+            "id": "work05",
+            "timeOnProject": "2017 - Current",
+            "currentProj": false,
+            "tags": ["UX Lead", "UI Lead"],
+            "image":"/media/hs/dashboards_tb.png",
+            "ctaText": "View Project",
+            "ctaLink":"#",
+            "private":false,
+            "incomplete":true
+          }
+
+        ],
+        "capabilities": [
+          {
+            "id": "cap01",
+            "label": "Leadership",
+            "bullets":[ "Training", "Pitching Concepts", "Design Lead", "Scoping"]
+          },
+          {
+            "id": "cap02",
+            "label": "Creative",
+            "bullets": ["Concepting", "Storyboarding", "User Journey", "User Flows", "UX Design", "UI Design"]
+          },
+          {
+            "id": "cap03",
+            "label": "Strategy",
+            "bullets":[ "Experiential Strategy", "User Research", "Workshop Facilitation", "Data Analysis"]
+          },
+          {
+            "id": "cap04",
+            "label": "Technology",
+            "bullets":[ "Rapid Prototyping", "Generative AI", "Traditional Web/Mobile"]
+          }
+        ],
+        "tools":[
+          {
+            "id": "01tool",
+            "label": "Figma",
+            "image": "/media/hs/figma.svg"
+          },
+          {
+            "id": "02tool",
+            "label": "After Effects",
+            "image": "/media/hs/ae.svg"
+          },
+          {
+            "id": "03tool",
+            "label": "Illustrator",
+            "image": "/media/hs/ai.svg"
+          },
+          {
+            "id": "04tool",
+            "label": "Photoshop",
+            "image": "/media/hs/ps.svg"
+          },
+          {
+            "id": "05tool",
+            "label": "Experience Cloud",
+            "image": "/media/hs/aec.svg"
+          },
+          {
+            "id": "06tool",
+            "label": "VS Code",
+            "image": "/media/hs/vscode.svg"
+          },
+          {
+            "id": "07tool",
+            "label": "Python",
+            "image": "/media/hs/python.svg"
+          },
+          {
+            "id": "08tool",
+            "label": "Sketch",
+            "image": "/media/hs/sketch.svg"
+          }
+        ]
+      }
+    }
+  }

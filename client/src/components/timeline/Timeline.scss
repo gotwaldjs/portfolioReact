@@ -1,0 +1,217 @@
+@use '@carbon/react/scss/colors';
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/spacing' as *;
+
+
+.custom-timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    .left-text-container {
+        margin-right: 16px;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    
+    .circle {
+        display: flex;
+        justify-content: center;
+        height: 44px;
+        width: 44px;
+        border-radius: 50%;
+        background-color: $support-info;
+        margin-bottom: 0;
+        margin-right:16px;
+    }
+
+    .left-text {
+        @include type-style('heading-01');
+        font-weight: bold;
+        color: $text-secondary;
+    }
+  
+    .right-text-header {
+        @include type-style('heading-02');
+        color: $text-primary;
+    }
+    
+    .right-text-body {
+        @include type-style('body-02');
+        color: $text-primary;
+    }
+}
+
+.custom-timeline-item-v2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    .left-text-container {
+        margin-right: 16px;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    
+    .circle {
+        display: flex;
+        justify-content: center;
+        height: 44px;
+        width: 44px;
+        border-radius: 50%;
+        background-color: $support-info;
+        margin-bottom: 0;
+        margin-right:16px;
+    }
+
+    .line {
+        position: absolute;
+        width: 2px;
+        background-color: $icon-secondary;
+        height: 44px;
+        transform: translateX(-50%) translateY(-50%);
+        margin-top:8px;
+    }
+
+    .left-text {
+        @include type-style('heading-01');
+        font-weight: bold;
+        color: $text-secondary;
+    }
+  
+    .right-text-header {
+        @include type-style('heading-02');
+        color: $text-primary;
+    }
+    
+    .right-text-body {
+        @include type-style('body-02');
+        color: $text-primary;
+    }
+}
+
+.timeline-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.custom-timeline-item-v3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 48px; // Adjust the spacing as per your design
+
+    .left-text-container {
+        flex-shrink: 0;
+        margin-right: $spacing-05;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .circle {
+        position: relative; // For positioning the line
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        width: 44px;
+        border-radius: 50%;
+        background-color: $support-info;
+        margin-right: $spacing-05;
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 100%; // 4px gap from the bottom of the circle
+            transform: translateX(-50%);
+            width: 2px;
+            height: 44px; // Height to reach the next item
+            margin-top: 4px;
+            background-color: $icon-secondary;
+        }
+
+    }
+
+    .left-text {
+        @include type-style('heading-01');
+        font-weight: bold;
+        color: $text-secondary;
+    }
+
+    .right-text-header {
+        @include type-style('heading-02');
+        color: $text-primary;
+    }
+
+    .right-text-body {
+        @include type-style('body-02');
+        color: $text-primary;
+    }
+}
+
+.custom-timeline-item-v4 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 48px; // Adjust the spacing as per your design
+
+    .left-text-container {
+        flex-shrink: 0;
+        margin-right: $spacing-05;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .circle {
+        position: relative; // For positioning the line
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        width: 44px;
+        border-radius: 50%;
+        background-color: $support-info;
+        margin-right: $spacing-05
+
+    }
+
+    .left-text {
+        @include type-style('heading-01');
+        font-weight: bold;
+        color: $text-secondary;
+    }
+
+    .right-text-header {
+        @include type-style('heading-02');
+        color: $text-primary;
+    }
+
+    .right-text-body {
+        @include type-style('body-02');
+        color: $text-primary;
+    }
+}
+
+.timeline-separator {
+    width: 2px;
+    background-color: $icon-secondary;
+    height: 20px; // Adjust based on the gap you want between items
+    align-self: center;
+}
+
+
+.line {
+    position: absolute;
+    width: 2px;
+    background-color: $icon-secondary;
+    height: 44px;
+    transform: translateX(-50%) translateY(-50%);
+    margin-top:8px;
+}
+  

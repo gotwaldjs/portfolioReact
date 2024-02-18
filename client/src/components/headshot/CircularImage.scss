@@ -1,0 +1,19 @@
+@use '@carbon/react/scss/spacing' as *;
+
+
+.circular-container {
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: $spacing-10;
+  }
+  
+  .circular-image {
+    display: block;
+    max-width: 100%;
+    object-fit: fill;
+  }
+  

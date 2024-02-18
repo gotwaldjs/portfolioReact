@@ -1,0 +1,15 @@
+
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/breakpoint' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/colors' as *;
+
+
+.landing-page__banner{
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.landing-page__banner {
+    background: $layer-01;
+}

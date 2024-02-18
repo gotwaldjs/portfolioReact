@@ -1,0 +1,132 @@
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/breakpoint' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/colors' as *;
+@use '@carbon/react/scss/colors';
+@use './mixins.scss' as *;
+@use './overrides.scss'as *;
+
+
+@mixin sm-breakpoint {
+  @media (max-width: 672px) {
+    @content; // This allows you to pass in SCSS content when the mixin is included
+  }
+}
+
+.landing-page__content {
+  position: relative;
+}
+
+.footer__caption {
+  @include type-style('body-01');
+  text-align: center;
+}
+
+.footer__caption_source {
+  @include type-style('productive-heading-01');
+  text-align: center;
+}
+
+.footer__copyright {
+  @include type-style('body-01');
+  text-align: center;
+  padding-top: $spacing-06;
+}
+
+.landing-page__footer {
+  display: grid;
+  margin-top:$spacing-07*4;
+  padding-top: $spacing-06;
+  padding-bottom: $spacing-07 * 4;
+  padding-left: $spacing-06;
+  @include landing-page-background;
+}
+
+
+.landing-page__cards{
+  padding: $spacing-06 0 0 0 ;
+}
+
+.landing-page__row2-cards{
+  padding: $spacing-07 0 0 0;
+}
+  
+.card--bg {
+  background-color: $gray-90;
+}
+
+.landing-page__section-heading{
+  @include type-style('heading-04');
+  padding-left: $spacing-05;
+  padding-top: $spacing-09;
+  padding-bottom: $spacing-06;
+
+}
+
+.landing-page__work-heading{
+  @include type-style('heading-04');
+  padding-left: $spacing-05;
+  padding-top: $spacing-09;
+
+}
+
+.landing-page__section-content{
+  @include type-style('body-02');
+  padding-left: $spacing-05;
+}
+
+.sectionBorder {
+  padding-top: $spacing-09;
+  margin-left: $spacing-05;
+  border-bottom: solid 1px colors.$gray-70;
+}
+
+.work-header-container {
+  display: flex;
+  align-items: center; // Vertically align items in the middle
+  justify-content: space-between; // Spread items across the horizontal axis
+
+  .landing-page__section-heading {
+    margin-right: $spacing-05; // Adjust spacing as needed
+  }
+}
+
+.workButton{
+  margin-left: $spacing-05;
+  margin-top: $spacing-05;
+  margin-bottom: $spacing-05;
+}
+
+.landing-page__statusFooterContent {
+  bottom: $spacing-06;
+  padding-left: $spacing-05;
+
+}
+
+.addBorderContactBottom {
+  padding-top: $spacing-09;
+  border-bottom: solid 1px colors.$gray-70;
+  
+  @include sm-breakpoint{
+    padding-top: 32px;
+}
+}
+
+.landing-page__Contact-section-heading {
+  @include type-style('heading-04');
+  padding-top: $spacing-09;
+  padding-bottom: $spacing-06;
+}
+
+.landing-page__footerContact {
+  @include type-style('body-02');
+  margin-bottom: $spacing-04;
+  padding-bottom:0;
+  max-width: 325px;
+}
+
+.landing-page_FooterButton {
+  position: absolute;
+  padding-left: $spacing-05;
+}

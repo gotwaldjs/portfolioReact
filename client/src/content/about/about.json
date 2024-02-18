@@ -1,0 +1,22 @@
+{
+  "bio": {
+    "employee": {
+      "id": "106Kennondale",
+      "first_name": "Jeffrey",
+      "last_name": "Gottwald",
+      "image": true,
+      "countryCode": "USA",
+      "countryName": "United States",
+      "age": "40",
+      "residence": "Richmond, VA",
+      "higherEducation": [
+        {
+          "undergraduate": "Randolph-Macon College",
+          "graduate": "Virginia Commonwealth University | Brandcenter"
+        }
+      ],
+      "briefography": "lorem ipsum dolar",
+      "linkedIn": "https://www.linkedin.com/in/jeffrey-s-gottwald/"
+    }
+  }
+}

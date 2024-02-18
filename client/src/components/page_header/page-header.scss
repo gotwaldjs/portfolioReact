@@ -1,0 +1,81 @@
+// LandingPageBanner.scss
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/breakpoint' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/colors' as *;
+
+
+@mixin sm-breakpoint {
+    @media (max-width: 672px) {
+      @content; // This allows you to pass in SCSS content when the mixin is included
+    }
+}
+
+.landing-page__banner {
+    padding-top: $spacing-06;
+    padding-bottom: $spacing-06;
+    height: 325px;
+    padding-left: $spacing-06;
+    position: relative;
+    
+    @include sm-breakpoint{
+        height: 275px;
+    }
+    
+}
+
+.landing-page__heading {
+    @include type-style('heading-06');
+    padding-left: $spacing-09;
+    
+    @include sm-breakpoint{
+        @include type-style('heading-04');
+        padding-left: $spacing-06;
+    }
+}
+
+.landing-page__banner_roles_heading{
+    @include type-style('heading-03');
+    padding-left: $spacing-09;
+
+    @include sm-breakpoint{
+        @include type-style('heading-02');
+        padding-left: $spacing-06;
+    }
+}
+
+.landing-page__image-column {
+    align-items: center; // Centers the image vertically within the column
+    justify-content: right; // Aligns the image to the right side of the column
+
+    @include sm-breakpoint{
+        top: 0;
+        align-items:normal;
+    }
+}
+
+.landing-page__statusContent{
+    position: absolute;
+    bottom: $spacing-06;
+    padding-left: $spacing-09;
+
+    @include sm-breakpoint{
+        padding-left: $spacing-06;
+    }
+
+}
+
+.landing-page__open-roles {
+    @include type-style('body-02');
+    margin-bottom: $spacing-04;
+    padding-bottom:0;
+    max-width: 325px;
+}
+
+.landing-page_button{
+    padding-left: $spacing-06;
+
+}
+
+  

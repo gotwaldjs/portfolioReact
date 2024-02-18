@@ -1,0 +1,15 @@
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/react/scss/breakpoint' as *;
+@use '@carbon/react/scss/theme' as *;
+@use '@carbon/colors' as *;
+
+
+.tabs-group{
+    background-color: $layer-01;
+    padding-left: $spacing-04;
+}
+
+.tabs-group-content {
+    padding: $spacing-10 $spacing-06;
+  }

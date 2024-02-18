@@ -1,0 +1,12 @@
+{
+    "project": {
+        "summary": {
+            "heading": "An Experience Like No Other",
+            "copy": "Lorem Ipsum dolar copy"
+        },
+        "design": {
+            "designHeading":"Design Heading",
+            "copyA": "Copy A"
+        }
+    }
+}
