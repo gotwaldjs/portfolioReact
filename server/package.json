@@ -31,5 +31,5 @@
     "redux-persist": "^6.0.0"
   },
   "description": "",
-  "heroku-postbuild": "cd client && npm install && npm run build"
+  "heroku-postbuild": "pwd && ls -la && cd client && npm install && npm run build"
 }
