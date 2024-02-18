@@ -4,6 +4,7 @@
 @use '@carbon/react/scss/breakpoint' as *;
 @use '@carbon/react/scss/theme' as *;
 @use '@carbon/colors' as *;
+@use '@carbon/themes';
 
 
 @mixin sm-breakpoint {
@@ -18,12 +19,25 @@
     height: 325px;
     padding-left: $spacing-06;
     position: relative;
+    background-color: themes.$layer-01;
     
     @include sm-breakpoint{
         height: 275px;
     }
     
 }
+
+.submit-notification-wrapper {
+    position: absolute;
+    top: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100; 
+    width: 100%;
+    pointer-events: none; 
+  }
+  
+  
 
 .landing-page__heading {
     @include type-style('heading-06');

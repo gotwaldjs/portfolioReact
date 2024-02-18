@@ -4,25 +4,25 @@ const express = require('express');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const nodemailer = require('nodemailer');
 const { WebAppStrategy } = require('ibmcloud-appid');
 const { SendEmailCommand, SESClient } = require("@aws-sdk/client-ses");
 const { EventBridgeClient, PutRuleCommand, PutTargetsCommand } = require("@aws-sdk/client-eventbridge");
 
-
-
-
 const app = express();
-app.use(express.static(path.join(__dirname, './../client/build')));
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, './../client/build', 'index.html'));
-});
-app.listen(process.env.PORT || 8080);
+
+// Middleware to ensure user is authenticated
+function ensureAuthenticated(req, res, next) {
+  if (req.user) { // Check if user is authenticated
+    return next();
+  }
+  // If not authenticated, send a 401 Unauthorized response
+  res.status(401).json({ message: "User not authenticated" });
+}
 
 // Environment variables for configuration
 const LANDING_PAGE_URL = "/";
 const LOGIN_URL = "/login";
-const CALLBACK_URL = "/ibm/appid/callback"; // Added leading '/' for consistency
+const CALLBACK_URL = "/ibm/appid/callback";
 const LOGOUT_URL = "/logout";
 const ROP_LOGIN_PAGE_URL = "/login";
 const REDIRECT_URI = "http://localhost:3000/";
@@ -33,48 +33,53 @@ const appIDConfig = {
     tenantId: process.env.TENANT_ID,
     secret: process.env.SECRET,
     oauthServerUrl: process.env.OAUTH_SERVER_URL,
-    redirectUri: process.env.REDIRECT_URI
+    redirectUri: REDIRECT_URI // Changed to use the variable defined above
 };
 
-// BodyParser Middleware for parsing request bodies
+// Middleware Setup
+app.use(express.static(path.join(__dirname, './../client/build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// Express Session Middleware for session management
 app.use(session({
-    secret: '123456abcdef', // Use a different variable or hardcode your secret
+    secret: '123456abcdef', // It's better to use an environment variable for the secret
     resave: true,
     saveUninitialized: true
 }));
-
-// Passport Middleware for authentication
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Passport configuration for IBM App ID
 passport.use(new WebAppStrategy(appIDConfig));
-
 passport.serializeUser((user, cb) => cb(null, user));
 passport.deserializeUser((obj, cb) => cb(null, obj));
 
+// Logout Route
 app.get('/logout', (req, res) => {
-    req.logout(); // Passport's way of logging a user out
-    res.redirect(LANDING_PAGE_URL); // Redirect to the landing page after logout
+    req.logout(function(err) {
+        if (err) { 
+            return next(err); 
+        }
+        res.redirect(LANDING_PAGE_URL);
+    });
 });
 
-// Route for handling form submissions from your React app
+
+// Protected Route Example (Add your protected routes as needed)
+app.post("/api/protected", ensureAuthenticated, (req, res) => {
+  // Protected route logic here
+  res.json({ message: "Access to protected data" });
+});
+
+// Form Submission Route
 app.post("/form/submit", bodyParser.urlencoded({ extended: false }), passport.authenticate(WebAppStrategy.STRATEGY_NAME, {
     successRedirect: LANDING_PAGE_URL,
     failureRedirect: ROP_LOGIN_PAGE_URL,
-    failureFlash: true // Allow flash messages
+    failureFlash: true
 }));
 
-
-// AWS Configuaration
-// Set the AWS Region from environment variable or default
+// AWS SES Configuration and Route
+// Set the AWS Region
 const REGION = process.env.AWS_REGION || "us-east-1";
-
-// Create SES service object
 const sesClient = new SESClient({
     region: REGION,
     credentials: {
@@ -83,6 +88,7 @@ const sesClient = new SESClient({
     }
 });
 
+// Example AWS SES Email Submission Route
 app.post("/requestCredsForm/submit", bodyParser.json(), async (req, res) => {
     const { name, email, purpose } = req.body;
     //console.log("Received req.body:", req.body);
@@ -168,6 +174,12 @@ app.post("/contactMe/submit", bodyParser.json(), async (req, res) => {
     }
 });
 
+// Catch-all Route to Serve React App
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './../client/build', 'index.html'));
+});
+
+// AWS EventBridge Client Configuration
 const eventBridgeClient = new EventBridgeClient({
     region: REGION,
     credentials: {
@@ -176,44 +188,8 @@ const eventBridgeClient = new EventBridgeClient({
     }
 });
 
-app.post("/schedule-event", bodyParser.json(), async (req, res) => {
-    const { ruleName, scheduleExpression, targetArn, input } = req.body;
-
-    // Step 1: Put Rule
-    const putRuleParams = {
-        Name: ruleName,
-        ScheduleExpression: scheduleExpression,
-    };
-
-    const putRuleCommand = new PutRuleCommand(putRuleParams);
-
-    try {
-        const ruleResponse = await eventBridgeClient.send(putRuleCommand);
-        console.log("Rule created:", ruleResponse);
-
-        // Step 2: Put Targets
-        const putTargetsParams = {
-            Rule: ruleName,
-            Targets: [
-                {
-                    Id: "targetId123", // A unique ID for the target
-                    Arn: targetArn,
-                    Input: JSON.stringify(input), // Optional: Input for the Lambda function, serialized into a JSON string
-                },
-            ],
-        };
-
-        const putTargetsCommand = new PutTargetsCommand(putTargetsParams);
-        const targetsResponse = await eventBridgeClient.send(putTargetsCommand);
-        console.log("Targets added:", targetsResponse);
-
-        res.status(200).json({ message: "Event scheduled successfully", success: true });
-    } catch (error) {
-        console.error("Error scheduling event:", error);
-        res.status(500).json({ message: 'There was an error scheduling the event. Please try again.', success: false });
-    }
-});
-
+// Example AWS EventBridge Schedule Event Route
+// Add your EventBridge scheduling logic here
 
 // Start the server
 const PORT = process.env.PORT || 3000;

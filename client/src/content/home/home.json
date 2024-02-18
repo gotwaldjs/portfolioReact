@@ -10,6 +10,7 @@
         "workAvailable": "You're logged in! You are now cleared to snoop around all projects!",
         "lockedModal": "This project is currently private. To view, please request credentials for access.",
         "incompletedProjModal": "This project is under construction and will be available soon. Please contact me to setup a one-on-one or to answer any questions about this project in the meantime.",
+        "contactMeBlurb":"Please fill out the information below and I will be in touch shortly.",
         "work": [
           {
             "id": "work01",

@@ -21,6 +21,7 @@ import {
 } from '../../components/contact-me-modal/ContactMe';
 import { LandingPageBanner } from '../../components/page_header/PageHeader';
 import renderWorkCard from '../../components/renderWorkCard/RenderWorkCard';
+import { SubmitNotification } from '../../components/contact-me-modal/ContactMe';
 import WorkModal from '../../components/workModal/WorkModal';
 import headshot from '../../media/hs/headshot.JPG';
 import data from './home.json';
@@ -30,7 +31,8 @@ import './home-page.scss';
 const Home = () => { 
     const { welcomeMat, statusTrue, statusFalse, title, open, briefography, capabilities, tools, work, workPrivate, workAvailable, incompletedProjModal } = data.home.content;
 
-    const isLoggedIn = useSelector(state => state.isLoggedIn);
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedWorkItem, setSelectedWorkItem] = useState(null);
@@ -38,6 +40,10 @@ const Home = () => {
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [modalHeading, setModalHeading] = useState('');
+    const [showToast, setShowToast] = useState(false);
+    const [toastMessage, setToastMessage] = useState('');
+    const [isToastSuccess, setIsToastSuccess] = useState(false);
+
     
     const onLoginButtonClick = async () => {
       console.log('Access All Work button clicked');
@@ -56,7 +62,7 @@ const Home = () => {
       setSelectedWorkItem(workItem);
     
       // Check if the user is logged in
-      if (isLoggedIn) {
+      if (isAuthenticated) {
         // If logged in, navigate to the /mas route
         navigate('/mas');
       } else {
@@ -68,45 +74,53 @@ const Home = () => {
     const onClose = () => {
       setIsModalOpen(false);
     };
+
+    const [showSubmitNotification, setShowSubmitNotification] = useState(false);
+    const [submitMessage, setSubmitMessage] = useState('');
+    const [submitSuccess, setSubmitSuccess] = useState(false);
+    const handleSubmissionResult = (success, message) => {
+      setShowSubmitNotification(true);
+      setSubmitSuccess(success);
+      setSubmitMessage(message);
+      setIsContactModalOpen(false); // Close the ContactMe modal
+    };
+    
   
     const modalCopy = selectedWorkItem && selectedWorkItem.private
       ? workPrivate // Copy for locked projects
       : workAvailable; // Copy for incomplete projects
   
-    const handleRequestAccess = async (formData) => {
-      setIsLoading(true); // Start loading before the request
-
-      try {
+      const handleRequestAccess = async (formData) => {
+        setIsLoading(true); // Start loading before the request
+      
+        try {
           const response = await fetch('/requestCredsForm/submit', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(formData),
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
           });
-
-          if (!response.ok) {
-              throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-
+      
           const data = await response.json();
-
-          if (data.success) {
-            setSuccessMessage(data.message); // Set the success message
-            setModalHeading("Submission Successful"); // Set a custom heading
-            setShowSuccessModal(true);
+      
+          if (response.ok && data.success) {
+            setToastMessage(data.message || "Submission Successful");
+            setIsToastSuccess(true);
+            setShowToast(true);
           } else {
-            setModalHeading("Submission Failed"); // Set a different heading for failure
-            setShowSuccessModal(true);
+            setToastMessage(data.message || "Submission Failed");
+            setIsToastSuccess(false);
+            setShowToast(true);
           }
-          return data;
-      } catch (error) {
+        } catch (error) {
+          setToastMessage("An error occurred during submission.");
+          setIsToastSuccess(false);
+          setShowToast(true);
           console.error('Error during request access:', error);
-          setModalHeading("Submission Failed"); // Set a different heading for failure
-          setShowSuccessModal(true);
-          return { success: false, message: error.message }; // Return error for further processing
-      } finally {
+        } finally {
           setIsLoading(false); // Stop loading irrespective of request outcome
-      }
-    };
+        }
+      };
+      
 
 
     const handleReqCredFormSubmissionSuccess = (message) => {
@@ -125,9 +139,10 @@ const Home = () => {
     
     
     return (
+      <>
       <Grid condensed>
         <Column lg={16} md={8} sm={4}>
-            <LandingPageBanner
+            <LandingPageBanner          
                 welcomeMat = {welcomeMat}
                 open = {open}
                 statusTrue = {statusTrue}
@@ -151,7 +166,7 @@ const Home = () => {
                     Work
                 </h1>
             </div>
-            {!isLoggedIn && (
+            {!isAuthenticated && (
             <Column>
                 <p 
                 className="landing-page__section-content"
@@ -179,7 +194,7 @@ const Home = () => {
             </Column>
             )}
             
-            {isLoggedIn && (
+            {isAuthenticated && (
             <Column>
                 <p className="landing-page__section-content">
                 {workAvailable}
@@ -195,11 +210,12 @@ const Home = () => {
                 key={workItem.id}
                 className="landing-page__cards"
             >
-                {renderWorkCard(workItem, isLoggedIn, handleCardClick)} {/* Pass isLoggedIn here */}
+                {renderWorkCard(workItem, isAuthenticated, handleCardClick)} {/* Pass isAuthenticated here */}
             </Column>
         ))}
         {isModalOpen && (
             <WorkModal
+
                 isPrivate={selectedWorkItem.private}
                 incomplete={selectedWorkItem.incomplete}
                 onRequestAccess={handleRequestAccess} // Function to handle request access
@@ -211,8 +227,10 @@ const Home = () => {
                 showSuccessModal={showSuccessModal}
                 setShowSuccessModal={setShowSuccessModal}
                 onCloseModal={handleModalClose}
+                onSubmission={handleSubmissionResult}
             />
         )}
+        
         <Column lg ={{ span: 12, offset: 2 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__content">
             <div className="sectionBorder"></div>
             <h1 className="landing-page__work-heading">
@@ -284,6 +302,7 @@ const Home = () => {
             </p>
         </Column>
       </Grid>
+    </>
   );
 }
 

@@ -63,6 +63,7 @@ const IncompleteProject = ({ incompleteModalCopy, onClose }) => (
   </Modal>
 );
 
+
 const WorkModal = ({ isPrivate, incomplete, onRequestAccess, onClose, lockedModalCopy, incompleteModalCopy, successMessage, setSuccessMessage }) => {
   if (isPrivate) {
     return <LockedProject 

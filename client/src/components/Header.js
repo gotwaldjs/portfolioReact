@@ -17,7 +17,7 @@ import { LightFilled20, Light20, Logout20 } from '@carbon/icons-react';
 
 function MastHead({ onThemeToggle, currentTheme }) {
   const [isSideNavExpanded, setIsSideNavExpanded] = useState(false);
-  const isLoggedIn = useSelector(state => state.isLoggedIn); // Access isLoggedIn from Redux store
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const dispatch = useDispatch();
   const onClickSideNavExpand = () => {
     setIsSideNavExpanded(!isSideNavExpanded);
@@ -72,7 +72,7 @@ function MastHead({ onThemeToggle, currentTheme }) {
             <LightFilled20 />
           </HeaderGlobalAction>
         )}
-        {isLoggedIn && (
+        {isAuthenticated && (
           <HeaderGlobalAction 
             aria-label="Logout" 
             tooltipAlignment="end" 

@@ -14,14 +14,15 @@ import { CustomTimelineItem, TimelineContainer, TimelineItemNoSeperator } from '
 import data from './masters.json';
 
 const Masters = () => {
-    const isLoggedIn = useSelector(state => state.isLoggedIn);
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
     const theme = useSelector(state => state.theme); // Access theme from Redux store
 
     useEffect(() => {
         console.log('Page loaded: ');
-        console.log('Logged In:', isLoggedIn);
+        console.log('Logged In:', isAuthenticated);
         console.log('Theme:', theme);
-    }, [isLoggedIn, theme]); // Dependencies array ensures this runs on changes to isLoggedIn or theme
+    }, [isAuthenticated, theme]); // Dependencies array ensures this runs on changes to isAuthenticated or theme
 
 
     return (

@@ -1,11 +1,17 @@
+import React, { useState } from 'react';
 import { Row, Column, Button } from '@carbon/react';
 import { Email16 } from '@carbon/icons-react';
 import { CircularImage } from '../headshot/Headshot';
 import useBreakpoint from '../use_breakpoint/UseBreakpoint';
+import {ContactMe, SubmitNotification} from '../contact-me-modal/ContactMe';
 import './page-header.scss'; // Your custom SCSS file
 
 export const LandingPageBanner = ({ welcomeMat, open, statusTrue, title, imageSrc }) => {
-  
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const toggleContactModal = () => {
+    setIsContactModalOpen(!isContactModalOpen);
+  };
+
   const breakpoint = useBreakpoint();
   console.log("Current breakpoint:", breakpoint);
 
@@ -16,11 +22,30 @@ export const LandingPageBanner = ({ welcomeMat, open, statusTrue, title, imageSr
     lg: '260px'
   };
 
+  const [showSubmitNotification, setShowSubmitNotification] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const handleSubmissionResult = (success, message) => {
+    setShowSubmitNotification(true);
+    setSubmitSuccess(success);
+    setSubmitMessage(message);
+    setIsContactModalOpen(false); // Close the ContactMe modal
+  };
+
   console.log("Image size set to:", imageSize[breakpoint]);
 
   return (
     <Row className="landing-page__banner">
       <Column lg={15} md={7} sm={3} className="landing-page__content">
+        {showSubmitNotification && (
+          <div className="submit-notification-wrapper">
+            <SubmitNotification 
+              success={submitSuccess}
+              message={submitMessage}
+              onClose={() => setShowSubmitNotification(false)}
+            />
+          </div>
+        )}
         <h1 className="landing-page__heading">
           {welcomeMat}
         </h1>
@@ -40,14 +65,21 @@ export const LandingPageBanner = ({ welcomeMat, open, statusTrue, title, imageSr
             <Button 
               className="landing-page_button" 
               renderIcon={Email16}
+              onClick={toggleContactModal}
             >
               Contact Me
             </Button>
           </>
         )}
       </Column>
+      {isContactModalOpen && (
+        <ContactMe 
+          onClose={() => setIsContactModalOpen(false)} 
+          onSubmission={handleSubmissionResult} />
+      )}
     </Row>
   );
 };
+
 
 
