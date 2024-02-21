@@ -13,7 +13,7 @@ import {
   HeaderGlobalBar,
   HeaderGlobalAction 
   } from '@carbon/react';
-import { LightFilled20, Light20, Logout20 } from '@carbon/icons-react';
+import { LightFilled, Light, Logout } from '@carbon/react/icons';
 
 function MastHead({ onThemeToggle, currentTheme }) {
   const [isSideNavExpanded, setIsSideNavExpanded] = useState(false);
@@ -65,11 +65,11 @@ function MastHead({ onThemeToggle, currentTheme }) {
       <HeaderGlobalBar>
         {currentTheme === 'g100' ? (
           <HeaderGlobalAction aria-label="Light Mode Display Theme" tooltipAlignment="end" onClick={handleThemeToggle}>
-            <Light20 />
+            <Light size={20} />
           </HeaderGlobalAction>
         ) : (
           <HeaderGlobalAction aria-label="Dark Mode Display Theme" tooltipAlignment="end" onClick={handleThemeToggle}>
-            <LightFilled20 />
+            <LightFilled size={20} />
           </HeaderGlobalAction>
         )}
         {isAuthenticated && (
@@ -77,7 +77,7 @@ function MastHead({ onThemeToggle, currentTheme }) {
             aria-label="Logout" 
             tooltipAlignment="end" 
             onClick={handleLogout}>
-            <Logout20 />
+            <Logout size={20} />
           </HeaderGlobalAction>
         )}
       </HeaderGlobalBar>

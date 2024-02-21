@@ -7,10 +7,10 @@ import {
   Button
 } from '@carbon/react';
 import {
-  Email16,
-  Password16,
-  Credentials16
-} from '@carbon/icons-react';
+  Email,
+  Password,
+  Credentials
+} from '@carbon/react/icons';
 import {
   CapabilitiesCard,
   ToolCard
@@ -178,14 +178,14 @@ const Home = () => {
                 <Button
                 style={{ marginBottom: '24px', marginRight: '1px' }} // Using CSS variable
                 onClick={onLoginButtonClick}
-                renderIcon={Password16}
+                renderIcon={Password}
                 >
                     Access All Work
                 </Button>
                 <Button 
                     style={{ marginBottom: '24px' }} // Using CSS variable
                     kind="secondary" 
-                    renderIcon={Credentials16}
+                    renderIcon={Credentials}
                     onClick={onRequestCredsButtonClick}
                 >
                     Request Credentials
@@ -283,7 +283,7 @@ const Home = () => {
             </p>
             <Button 
               className="landing-page_FooterButton"
-              renderIcon={Email16}
+              renderIcon={Email}
             >
               Contact Me
             </Button>

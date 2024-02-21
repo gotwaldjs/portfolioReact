@@ -9,7 +9,7 @@ import {
     Layer,
     Loading
 } from '@carbon/react';
-import { ArrowRight16, Return16 } from '@carbon/icons-react';
+import { ArrowRight, Return } from '@carbon/react/icons';
 import { useNavigate } from 'react-router-dom';
 import { RequestCredsSubmit } from '../../components/workModal/WorkModal';
 import './request-creds.scss';
@@ -94,7 +94,7 @@ const RequestCreds = ({ requestCredsResponse }) => {
             <Button
                     className="returnHome-button"
                     kind = "ghost"
-                    renderIcon = {Return16}
+                    renderIcon = {Return}
                     onClick={onReturnButtonClick}
                     style = {{ marginTop:'48px'}}
                     >
@@ -153,7 +153,7 @@ const RequestCreds = ({ requestCredsResponse }) => {
                         ) : (
                             <Button
                                 style={{ marginTop:'24px', marginBottom: '48px', marginRight: '1px', marginLeft:'16px' }} // Using CSS variable
-                                renderIcon = {ArrowRight16}
+                                renderIcon = {ArrowRight}
                                 disabled = {isButtonDisabled}
                                 onClick={onSubmitButtonClick}
                             >

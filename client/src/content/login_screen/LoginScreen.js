@@ -7,7 +7,7 @@ import {
     Layer,
     Loading
 } from '@carbon/react';
-import { ArrowRight16, Return16 } from '@carbon/icons-react';
+import { ArrowRight, Return } from '@carbon/react/icons';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './login-screen.scss';
@@ -70,7 +70,7 @@ const LoginScreen = () => {
             <Button
                     className="returnHome-button"
                     kind = "ghost"
-                    renderIcon = {Return16}
+                    renderIcon = {Return}
                     onClick={onReturnButtonClick}
                     style = {{ marginTop:'48px'}}
                     >
@@ -113,7 +113,7 @@ const LoginScreen = () => {
                         ) : (
                             <Button
                                 style={{ marginTop:'24px', marginBottom: '48px', marginRight: '1px', marginLeft:'16px' }} // Using CSS variable
-                                renderIcon = {ArrowRight16}
+                                renderIcon = {ArrowRight}
                                 disabled = {isButtonDisabled}
                                 onClick={onLoginButtonClick}
                             >

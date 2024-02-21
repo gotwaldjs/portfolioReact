@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Column, Button } from '@carbon/react';
-import { Email16 } from '@carbon/icons-react';
+import { Email } from '@carbon/react/icons';
 import { CircularImage } from '../headshot/Headshot';
 import useBreakpoint from '../use_breakpoint/UseBreakpoint';
 import {ContactMe, SubmitNotification} from '../contact-me-modal/ContactMe';
@@ -34,6 +34,8 @@ export const LandingPageBanner = ({ welcomeMat, open, statusTrue, title, imageSr
 
   console.log("Image size set to:", imageSize[breakpoint]);
 
+
+
   return (
     <Row className="landing-page__banner">
       <Column lg={15} md={7} sm={3} className="landing-page__content">
@@ -64,7 +66,9 @@ export const LandingPageBanner = ({ welcomeMat, open, statusTrue, title, imageSr
             </p>
             <Button 
               className="landing-page_button" 
-              renderIcon={Email16}
+              renderIcon={React.forwardRef((props, ref) => (
+                <Email ref={ref} size={20} {...props} />
+              ))}
               onClick={toggleContactModal}
             >
               Contact Me

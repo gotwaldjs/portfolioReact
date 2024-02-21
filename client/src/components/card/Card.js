@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Card.scss';
 import { Tag } from '@carbon/react';
-import { Locked16, Time16 } from '@carbon/icons-react';
+import { Locked, Time } from '@carbon/react/icons';
 
 
 export const Card = ({ imageSrc, title, description, ctaLink, backgroundColor,tagType,tagLabel, isPrivate, currentProj, onCardClick }) => {
@@ -19,12 +19,12 @@ export const Card = ({ imageSrc, title, description, ctaLink, backgroundColor,ta
       <img src={imageSrc} alt="" className="card__image" />
       {isPrivate && (
           <div className="lock-container">
-              <Locked16 className="lock" />
+              <Locked size={16} className="lock" />
           </div>
       )}
       {currentProj && !isPrivate && (
           <div className="lock-container">
-              <Time16 className="lock" />
+              <Time size={16} className="lock" />
           </div>
       )}
       <div className="addBorderBottom">
@@ -78,12 +78,12 @@ export const CardTwoTags = ({ imageSrc, title, description, ctaLink, backgroundC
       </div>
       {isPrivate && (
           <div className="lock-container">
-              <Locked16 className="lock" />
+              <Locked size={16} className="lock" />
           </div>
       )}
       {currentProj && !isPrivate && (
           <div className="lock-container">
-              <Time16 className="lock" />
+              <Time size={16} className="lock" />
           </div>
       )}
       <div className="addBorderBottom">
@@ -157,12 +157,12 @@ export const CardThreeTags = ({ imageSrc, title, description, ctaLink, backgroun
       </div>
       {isPrivate && (
           <div className="lock-container">
-              <Locked16 className="lock" />
+              <Locked size={16} className="lock" />
           </div>
       )}
       {currentProj && !isPrivate && (
           <div className="lock-container">
-              <Time16 className="lock" />
+              <Time size={16} className="lock" />
           </div>
       )}
       <div className="addBorderBottom">
@@ -246,12 +246,12 @@ export const CardFourTags = ({ imageSrc, title, description, ctaLink, background
       </div>
       {isPrivate && (
           <div className="lock-container">
-              <Locked16 className="lock" />
+              <Locked size={16} className="lock" />
           </div>
       )}
       {currentProj && !isPrivate && (
           <div className="lock-container">
-              <Time16 className="lock" />
+              <Time size={16} className="lock" />
           </div>
       )}
       <div className="addBorderBottom">
@@ -346,12 +346,12 @@ export const CardFiveTags = ({ imageSrc, title, description, ctaLink, background
       </div>
       {isPrivate && (
           <div className="lock-container">
-              <Locked16 className="lock" />
+              <Locked size={16} className="lock" />
           </div>
       )}
       {currentProj && !isPrivate && (
           <div className="lock-container">
-              <Time16 className="lock" />
+              <Time size={16} className="lock" />
           </div>
       )}
       <div className="addBorderBottom">
