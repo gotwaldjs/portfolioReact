@@ -30,7 +30,13 @@ import './home-page.scss';
 
 const Home = () => { 
     const { welcomeMat, statusTrue, statusFalse, title, open, briefography, capabilities, tools, work, workPrivate, workAvailable, incompletedProjModal } = data.home.content;
-
+    console.log(work);
+    console.log()
+    console.log(welcomeMat);
+    console.log()
+    console.log(capabilities);
+    console.log()
+    console.log(tools);
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
     const navigate = useNavigate();
@@ -202,6 +208,7 @@ const Home = () => {
             </Column>
             )}
         </Column>
+        console.log(work); 
         {work.map((workItem, index) => (
             <Column
                 lg={index % 3 === 0 ? { span: 4, offset: 2 } : 4}
