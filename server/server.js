@@ -8,6 +8,7 @@ const nodemailer = require('nodemailer');
 const { WebAppStrategy } = require('ibmcloud-appid');
 const { SendEmailCommand, SESClient } = require("@aws-sdk/client-ses");
 const { EventBridgeClient, PutRuleCommand, PutTargetsCommand } = require("@aws-sdk/client-eventbridge");
+const { S3Client, GetObjectCommand, PutObjectCommand  } = require('@aws-sdk/client-s3');
 
 const app = express();
 // Middleware to ensure user is authenticated
@@ -41,7 +42,7 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
-    secret: '123456abcdef', // It's better to use an environment variable for the secret
+    secret: process.env.SESSION_SECRET, // It's better to use an environment variable for the secret
     resave: true,
     saveUninitialized: true
 }));
@@ -87,6 +88,75 @@ const sesClient = new SESClient({
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
     }
 });
+
+
+
+const s3 = new S3Client({
+    region: REGION,
+    credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    }
+});
+
+
+app.get('/home/data', async (req, res) => {
+    try {
+      const data = await fetchDataFromS3('my-portfolio-jsg', 'home.json');
+      res.json(data);
+    } catch (error) {
+      console.error('Error fetching data from S3:', error);
+      res.status(500).send('Error fetching data');
+    }
+});
+
+// Function to upload data to S3
+async function uploadDataToS3(data) {
+    const params = {
+        Bucket: bucketName,
+        Key: 'home.json', // File name you want to save as in S3
+        Body: JSON.stringify(data)
+    };
+
+    try {
+        const stored = await s3.upload(params).promise();
+        console.log('File uploaded successfully at', stored.Location);
+    } catch (err) {
+        console.error('Error uploading data: ', err.message);
+    }
+}  
+
+// Function to fetch data from S3
+async function fetchDataFromS3(bucketName, key) {
+    const params = {
+        Bucket: bucketName,
+        Key: key,
+    };
+
+    try {
+        const command = new GetObjectCommand(params);
+        const response = await s3.send(command);
+        
+        // Assuming the file is text and UTF-8 encoded
+        const bodyContents = await streamToString(response.Body);
+        //console.log("Data fetched Successfuly", JSON.parse(bodyContents))
+        console.log("Data fetched Successfuly")
+        return JSON.parse(bodyContents); // Or just return the string if not JSON
+    } catch (error) {
+        console.error("Error fetching data from S3:", error);
+        return null; // Or handle the error as appropriate
+    }
+}
+
+// Helper function to convert a stream into a string
+function streamToString(stream) {
+    return new Promise((resolve, reject) => {
+        const chunks = [];
+        stream.on("data", (chunk) => chunks.push(chunk));
+        stream.on("error", reject);
+        stream.on("end", () => resolve(Buffer.concat(chunks).toString("utf-8")));
+    });
+}
 
 // Example AWS SES Email Submission Route
 app.post("/requestCredsForm/submit", bodyParser.json(), async (req, res) => {

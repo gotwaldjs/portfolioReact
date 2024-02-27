@@ -4,6 +4,7 @@
   "description": "Jefe's portfolio app",
   "main": "src/index.js",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.521.0",
     "@carbon/colors": "^11.0.0",
     "@carbon/elements": "^11.0.0",
     "@carbon/icons": "^11.0.0",
@@ -70,6 +71,7 @@
     "atob": "^2.1.2",
     "autoprefixer": "^10.4.17",
     "available-typed-arrays": "^1.0.5",
+    "aws-sdk": "^2.1565.0",
     "axe-core": "^4.7.2",
     "axobject-query": "^3.2.1",
     "babel-core": "^7.0.0-bridge.0",
@@ -335,7 +337,6 @@
     "eslint-plugin-jest": "^24.7.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-testing-library": "^3.10.2",
     "eslint-scope": "^5.1.1",
     "eslint-utils": "^3.0.0",
@@ -1271,6 +1272,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
