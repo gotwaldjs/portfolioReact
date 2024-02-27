@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
@@ -15,169 +15,44 @@ import {
   CapabilitiesCard,
   ToolCard
 } from '../../components/card/Card';
-import {
-  ContactMe,
-  SubmitNotifiication
-} from '../../components/contact-me-modal/ContactMe';
 import { LandingPageBanner } from '../../components/page_header/PageHeader';
 import renderWorkCard from '../../components/renderWorkCard/RenderWorkCard';
-import { SubmitNotification } from '../../components/contact-me-modal/ContactMe';
 import WorkModal from '../../components/workModal/WorkModal';
 import headshot from '../../media/hs/headshot.JPG';
-//import data from './home.json';
 import useFetchData from '../dataHook';
+import { useModalManagement, useToast } from '../../components/custom_hooks/homeHooks';
 import './home-page.scss';
 
-
-
-
-
 function Home() {
-  console.log("Before useSelector");
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  console.log("After useSelector");
-  const [homeData, setHomeData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  console.log("Before useEffect to get data");
-  useEffect(() => {
-    // Start fetching data
-    setLoading(true);
-    fetch('/home/data') // Ensure this is the correct endpoint
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setHomeData(data); // Assign fetched data to state
-        setLoading(false); // Data has been loaded
-      })
-      .catch(error => {
-        console.error("There was an error fetching the data:", error);
-        setError(error); // Set error state
-        setLoading(false); // Ensure loading state is updated even in case of error
-      });
-  }, []); // Empty dependency array ensures this effect runs once on mount
-
+  const { data: homeData, loading, error } = useFetchData('/home/data');
   const navigate = useNavigate();
+
+  // Custom hooks for modal and toast management
+  const { isModalOpen, selectedWorkItem, modalHeading, openModal, closeModal } = useModalManagement();
+  const { showToast, toastMessage, isToastSuccess, triggerToast } = useToast();
+
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   const { welcomeMat, statusTrue, statusFalse, title, open, briefography, capabilities, tools, work, workPrivate, workAvailable, incompletedProjModal } = homeData.home.content;
-  
-  //const { welcomeMat, statusTrue, statusFalse, title, open, briefography, capabilities, tools, work, workPrivate, workAvailable, incompletedProjModal } = data.home.content;
-  console.log(work);
-  console.log();
-  console.log(welcomeMat);
-  console.log();
-  console.log(capabilities);
-  console.log();
-  console.log(tools);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedWorkItem, setSelectedWorkItem] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
-  const [modalHeading, setModalHeading] = useState('');
-  const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState('');
-  const [isToastSuccess, setIsToastSuccess] = useState(false);
-
-
-
-  const onLoginButtonClick = async () => {
-    console.log('Access All Work button clicked');
-    // Redirect to the login page
+  const onLoginButtonClick = () => {
     navigate('/login');
   };
 
-  const onRequestCredsButtonClick = async () => {
-    console.log('Request Credentials button clicked');
-    // Redirect to the login page
+  const onRequestCredsButtonClick = () => {
     navigate('/request-credentials');
   };
 
   const handleCardClick = (workItem) => {
     setSelectedWorkItem(workItem);
-
-    // Check if the user is logged in
     if (isAuthenticated) {
-      // If logged in, navigate to the /mas route
       navigate('/mas');
     } else {
-      // If not logged in, open a modal
-      setIsModalOpen(true);
-    }
-  };
-
-  const onClose = () => {
-    setIsModalOpen(false);
-  };
-
-  const [showSubmitNotification, setShowSubmitNotification] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const handleSubmissionResult = (success, message) => {
-    setShowSubmitNotification(true);
-    setSubmitSuccess(success);
-    setSubmitMessage(message);
-    setIsContactModalOpen(false); // Close the ContactMe modal
-  };
-
-
-  const modalCopy = selectedWorkItem && selectedWorkItem.private
-    ? workPrivate // Copy for locked projects
-    : workAvailable; // Copy for incomplete projects
-
-  const handleRequestAccess = async (formData) => {
-    setIsLoading(true); // Start loading before the request
-
-    try {
-      const response = await fetch('/requestCredsForm/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setToastMessage(data.message || "Submission Successful");
-        setIsToastSuccess(true);
-        setShowToast(true);
-      } else {
-        setToastMessage(data.message || "Submission Failed");
-        setIsToastSuccess(false);
-        setShowToast(true);
-      }
-    } catch (error) {
-      setToastMessage("An error occurred during submission.");
-      setIsToastSuccess(false);
-      setShowToast(true);
-      console.error('Error during request access:', error);
-    } finally {
-      setIsLoading(false); // Stop loading irrespective of request outcome
-    }
-  };
-
-
-
-  const handleReqCredFormSubmissionSuccess = (message) => {
-    setSuccessMessage(message);
-    setShowSuccessModal(true);
-  };
-
-  const handleModalClose = (result) => {
-    setIsModalOpen(false); // Close the LockedProject modal
-    if (result && result.success) {
-      setShowSuccessModal(true); // Show the success modal based on the result
-    } else {
-      // Handle failure case if needed
+      toggleModal();
     }
   };
 
@@ -253,7 +128,7 @@ function Home() {
             key={workItem.id}
             className="landing-page__cards"
           >
-            {renderWorkCard(workItem, isAuthenticated, handleCardClick)} {/* Pass isAuthenticated here */}
+            {renderWorkCard(workItem, isAuthenticated, handleCardClick)}
           </Column>
         ))}
         {isModalOpen && (
