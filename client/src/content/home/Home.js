@@ -48,13 +48,17 @@ function Home() {
   };
 
   const handleCardClick = (workItem) => {
-    setSelectedWorkItem(workItem);
     if (isAuthenticated) {
       navigate('/mas');
     } else {
-      toggleModal();
+      openModal(workItem);
     }
   };
+
+  const onClose = () => {
+    setIsModalOpen(false);
+  };
+
 
 
   return (
@@ -133,19 +137,12 @@ function Home() {
         ))}
         {isModalOpen && (
           <WorkModal
-
             isPrivate={selectedWorkItem.private}
             incomplete={selectedWorkItem.incomplete}
-            onRequestAccess={handleRequestAccess} // Function to handle request access
-            onClose={onClose} // Function to close the modal
+            onClose={closeModal} // Function to close the modal
             lockedModalCopy={workPrivate} // Copy for locked projects
             incompleteModalCopy={incompletedProjModal} // Copy for incomplete projects
-            isLoading={isLoading}
-            setIsLoading={setIsLoading}
-            showSuccessModal={showSuccessModal}
-            setShowSuccessModal={setShowSuccessModal}
-            onCloseModal={handleModalClose}
-            onSubmission={handleSubmissionResult} />
+         />
         )}
 
         <Column lg={{ span: 12, offset: 2 }} md={{ span: 4, offset: 0 }} sm={{ span: 4, offset: 0 }} className="landing-page__content">

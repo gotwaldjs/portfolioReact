@@ -5,6 +5,7 @@ export function useModalManagement(initialItem = null) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedWorkItem, setSelectedWorkItem] = useState(initialItem);
     const [modalHeading, setModalHeading] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
   
     const openModal = (item = null, heading = '') => {
       setSelectedWorkItem(item);
@@ -17,6 +18,8 @@ export function useModalManagement(initialItem = null) {
       setSelectedWorkItem(null); // or keep the last selected item, based on your needs
       setModalHeading('');
     };
+
+    
   
     return { isModalOpen, selectedWorkItem, modalHeading, openModal, closeModal };
   }
@@ -39,3 +42,4 @@ export function useToast(initialState = false) {
     return { showToast, toastMessage, isToastSuccess, triggerToast };
 }
   
+
