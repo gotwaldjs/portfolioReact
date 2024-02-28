@@ -217,7 +217,7 @@ app.post("/contactMe/submit", bodyParser.json(), async (req, res) => {
         ReplyToAddresses: [email],
         Message: {
             Subject: {
-                Data: 'Credential Request Submission'
+                Data: 'Contact Me Form Submission'
             },
             Body: {
                 Html: {
