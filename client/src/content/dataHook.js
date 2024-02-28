@@ -5,7 +5,7 @@ function useFetchData(url) {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true); // Initialize loading state
 
-    console.log("useFetchData has been called");
+    //console.log("useFetchData has been called");
     
     useEffect(() => {
         let ignore = false;
@@ -21,7 +21,7 @@ function useFetchData(url) {
                 if (!ignore) {
                     setData(json);
                     setError(null); // Clear any existing errors
-                    console.log("Fetched data Inside Hook:", json);
+                    //console.log("Fetched data Inside Hook:", json);
                 }
             })
             .catch(err => {
@@ -39,7 +39,7 @@ function useFetchData(url) {
             ignore = true;
         };
     }, [url]);
-    console.log("Fetched data outside Hook:", data);
+    //console.log("Fetched data outside Hook:", data);
     return { data, error, loading }; // Return the data, error, and loading states
 }
 

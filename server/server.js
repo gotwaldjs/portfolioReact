@@ -143,7 +143,7 @@ async function fetchDataFromS3(bucketName, key) {
         // Assuming the file is text and UTF-8 encoded
         const bodyContents = await streamToString(response.Body);
         //console.log("Data fetched Successfuly", JSON.parse(bodyContents))
-        console.log("Data fetched Successfuly")
+        //console.log("Data fetched Successfuly")
         return JSON.parse(bodyContents); // Or just return the string if not JSON
     } catch (error) {
         console.error("Error fetching data from S3:", error);
