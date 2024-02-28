@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import {
   Grid,
   Column,
-  Button
+  Button,
+  Loading
 } from '@carbon/react';
 import {
   Email,
@@ -34,7 +35,14 @@ function Home() {
   const { showToast, toastMessage, isToastSuccess, triggerToast } = useToast();
 
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) {
+    return (
+      <div className="loading-overlay">
+        <Loading description="Active loading indicator" withOverlay={false} />
+      </div>
+    );
+  }
+  
   if (error) return <div>Error: {error.message}</div>;
 
   const { welcomeMat, statusTrue, statusFalse, title, open, briefography, capabilities, tools, work, workPrivate, workAvailable, incompletedProjModal } = homeData.home.content;
@@ -54,11 +62,6 @@ function Home() {
       openModal(workItem);
     }
   };
-
-  const onClose = () => {
-    setIsModalOpen(false);
-  };
-
 
 
   return (
