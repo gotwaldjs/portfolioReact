@@ -18,12 +18,6 @@ const Masters = () => {
 
     const theme = useSelector(state => state.theme); // Access theme from Redux store
 
-    useEffect(() => {
-        console.log('Page loaded: ');
-        console.log('Logged In:', isAuthenticated);
-        console.log('Theme:', theme);
-    }, [isAuthenticated, theme]); // Dependencies array ensures this runs on changes to isAuthenticated or theme
-
 
     return (
         <Grid condensed>
