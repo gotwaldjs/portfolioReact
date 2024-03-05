@@ -86,4 +86,72 @@ export const LandingPageBanner = ({ welcomeMat, open, statusTrue, title, imageSr
 };
 
 
+export const ProjectBanner = ({ welcomeMat, open, statusTrue, title }) => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const toggleContactModal = () => {
+    setIsContactModalOpen(!isContactModalOpen);
+  };
+
+  const breakpoint = useBreakpoint();
+  console.log("Current breakpoint:", breakpoint);
+
+  const [showSubmitNotification, setShowSubmitNotification] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const handleSubmissionResult = (success, message) => {
+    setShowSubmitNotification(true);
+    setSubmitSuccess(success);
+    setSubmitMessage(message);
+    setIsContactModalOpen(false); // Close the ContactMe modal
+  };
+
+
+
+  return (
+    <Row className="landing-page__banner">
+      <Column lg={15} md={7} sm={3} className="landing-page__content">
+        {showSubmitNotification && (
+          <div className="submit-notification-wrapper">
+            <SubmitNotification 
+              success={submitSuccess}
+              message={submitMessage}
+              onClose={() => setShowSubmitNotification(false)}
+            />
+          </div>
+        )}
+        <h1 className="landing-page__heading">
+          {welcomeMat}
+        </h1>
+        <p className="landing-page__banner_roles_heading">
+          {title}
+        </p>
+      </Column>
+      <Column lg={16} md={8} sm={4} className="project-page__statusContent">
+        {open && (
+          <>
+            <p className="landing-page__open-roles">
+              {statusTrue}
+            </p>
+            <Button 
+              className="landing-page_button" 
+              renderIcon={React.forwardRef((props, ref) => (
+                <Email ref={ref} size={20} {...props} />
+              ))}
+              onClick={toggleContactModal}
+            >
+              Contact Me
+            </Button>
+          </>
+        )}
+      </Column>
+      {isContactModalOpen && (
+        <ContactMe 
+          onClose={() => setIsContactModalOpen(false)} 
+          onSubmission={handleSubmissionResult} />
+      )}
+    </Row>
+  );
+};
+
+
 

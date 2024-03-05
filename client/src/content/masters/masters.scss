@@ -3,11 +3,16 @@
 @use '@carbon/react/scss/breakpoint' as *;
 @use '@carbon/react/scss/theme' as *;
 @use '@carbon/colors' as *;
+@use '@carbon/themes';
 
 
 .tabs-group{
     background-color: $layer-01;
-    padding-left: $spacing-04;
+    background-color: themes.$layer-01;
+}
+
+.tab-placement{
+    margin-left: $spacing-09;
 }
 
 .tabs-group-content {

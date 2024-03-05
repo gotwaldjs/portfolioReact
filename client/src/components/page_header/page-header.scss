@@ -45,7 +45,7 @@
     
     @include sm-breakpoint{
         @include type-style('heading-04');
-        padding-left: $spacing-06;
+        padding-left: 0;
     }
 }
 
@@ -55,7 +55,7 @@
 
     @include sm-breakpoint{
         @include type-style('heading-02');
-        padding-left: $spacing-06;
+        padding-left: 0;
     }
 }
 
@@ -80,15 +80,34 @@
 
 }
 
+.project-page__statusContent{
+    position: absolute;
+    padding-top: $spacing-06;
+    padding-left: $spacing-09;
+
+    @include sm-breakpoint{
+        padding-left: 0;
+    }
+
+}
+
 .landing-page__open-roles {
     @include type-style('body-02');
     margin-bottom: $spacing-04;
     padding-bottom:0;
     max-width: 325px;
+
+    @include sm-breakpoint{
+        padding-left: 0;
+    }
 }
 
 .landing-page_button{
     padding-left: $spacing-06;
+
+    @include sm-breakpoint{
+        padding-left: 0;
+    }
 
 }
 

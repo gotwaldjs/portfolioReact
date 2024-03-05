@@ -1,5 +1,9 @@
 {
     "project": {
+        "welcomeMat":"The Masters",
+        "open": true,
+        "statusTrue": "I am currently available for roles in User Experience Design and User Data Analysis",
+        "briefography": "I am Richmond-based experience design and user data analyst professional. My goal is to leverage user- and data-driven insights to provide the best experience for users. I have been designing user experiences for ten plus years now mainly within but not limited to digital interfaces. Over that time my roles have spanned from user researcher, UX and UI designer, to the lead designer in the Sports & Entertainment and Financial market sectors. I lean heavily on strategy and storytelling as my primary pillars throughout the design process. My curiosity leads me to never to shy away from a challenge or design to a new technology (most recently for Apple’s Vision Pro VR headset). Please feel free to reach out about opportunities and availability.",
         "summary": {
             "heading": "An Experience Like No Other",
             "copy": "Lorem Ipsum dolar copy"

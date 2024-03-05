@@ -8,28 +8,35 @@ import {
     TabList,
     TabPanels,
     TabPanel,
+    SideNav,
+    SideNavItems,
+    SideNavLink,
+    SideNavMenu,
+    SideNavMenuItem
 } from '@carbon/react';
 import './masters.scss';
 import { CustomTimelineItem, TimelineContainer, TimelineItemNoSeperator } from '../../components/timeline/Timeline';
+import { ProjectBanner } from '../../components/page_header/PageHeader';
 import data from './masters.json';
 
 const Masters = () => {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-
     const theme = useSelector(state => state.theme); // Access theme from Redux store
 
+    const { welcomeMat, statusTrue, open } = data.project;
 
     return (
         <Grid condensed>
-            <Column lg={16} md={8} sm={4} className="landing-page__banner">
-                <h1 className="landing-page__heading">
-                    The Masters 
-                </h1>
+            <Column lg={16} md={8} sm={4}>
+                <ProjectBanner 
+                    welcomeMat={welcomeMat}
+                    open={open}
+                    statusTrue={statusTrue}/>
             </Column>
             <Column lg={16} md={8} sm={4} className="landing-page__r2">
                 <Tabs defaultSelectedIndex={0}>
                     <TabList className="tabs-group" aria-label="Tab navigation">
-                        <Tab>Summary</Tab>
+                        <Tab style = {{ marginLeft:'54px'}}>Summary</Tab>
                         <Tab>Design</Tab>
                         <Tab>User Analytics</Tab>
                     </TabList>
@@ -38,15 +45,31 @@ const Masters = () => {
                             <Grid className="tabs-group-content">
                                 <Column
                                     md={4}
-                                    lg={7}
+                                    lg={3}
                                     sm={4}
                                     className="landing-page__tab-content">
-                                    <h2 className="landing-page__subheading">{data.project.summary.heading}</h2>
-                                    <p className="landing-page__p">{data.project.summary.copy}</p>
-                                    
+                                    <SideNavItems>
+                                        <SideNavMenu title="Project Walkthrough">
+                                            <SideNavMenuItem href="https://www.carbondesignsystem.com/">
+                                                Overview and Detils
+                                            </SideNavMenuItem>
+                                            <SideNavMenuItem href="https://www.carbondesignsystem.com/">
+                                                The Ask
+                                            </SideNavMenuItem>
+                                            <SideNavMenuItem href="https://www.carbondesignsystem.com/">
+                                                The Process
+                                            </SideNavMenuItem>
+                                        </SideNavMenu>
+                                        <SideNavLink>
+                                            Past Projects
+                                        </SideNavLink>
+                                        <SideNavLink>
+                                            Contact Me
+                                        </SideNavLink>
+                                    </SideNavItems>
                                 </Column>
-                                <Column md={4} lg={{ span: 8, offset: 7 }} sm={4}>   
-                                <TimelineContainer>
+                                <Column md={4} lg={{ span: 9, offset: 3 }} sm={4}>   
+                                    <TimelineContainer>
                                     <CustomTimelineItem
                                         leftText="2016"
                                         rightTextHeader="Designer"
