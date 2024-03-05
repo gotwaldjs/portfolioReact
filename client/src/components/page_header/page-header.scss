@@ -75,7 +75,7 @@
     padding-left: $spacing-09;
 
     @include sm-breakpoint{
-        padding-left: $spacing-06;
+        padding-left: 0;
     }
 
 }

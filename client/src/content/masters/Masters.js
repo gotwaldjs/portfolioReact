@@ -36,7 +36,11 @@ const Masters = () => {
             <Column lg={16} md={8} sm={4} className="landing-page__r2">
                 <Tabs defaultSelectedIndex={0}>
                     <TabList className="tabs-group" aria-label="Tab navigation">
-                        <Tab style = {{ marginLeft:'54px'}}>Summary</Tab>
+                        <Tab 
+                            //style = {{ marginLeft:'54px'}}
+                            className="tab-placement"
+                        >
+                            Summary</Tab>
                         <Tab>Design</Tab>
                         <Tab>User Analytics</Tab>
                     </TabList>
