@@ -9,10 +9,11 @@
 .tabs-group{
     background-color: $layer-01;
     background-color: themes.$layer-01;
+    
 }
 
 .tab-placement{
-    margin-left: $spacing-09;
+    padding-left: $spacing-09;
 }
 
 .tabs-group-content {
